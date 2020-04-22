@@ -6,13 +6,14 @@ import javax.persistence.*;
 
 @Entity
 public class Building extends Frame {
-    @Column
-    private String type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "castle_id")
     @JsonBackReference
     private Castle castle;
+
+    @Column
+    private String type;
 
     public Castle getCastle() {
         return castle;

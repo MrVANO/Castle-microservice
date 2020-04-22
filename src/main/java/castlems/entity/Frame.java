@@ -9,9 +9,9 @@ public class Frame {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String name;
-    @Column
     private Integer level;
+    @Column
+    private String name;
     @Column
     private String state;
 
@@ -23,20 +23,20 @@ public class Frame {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getLevel() {
         return level;
     }
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getState() {
@@ -51,8 +51,8 @@ public class Frame {
     public String toString() {
         return "Frame{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", level=" + level +
+                ", name='" + name + '\'' +
                 ", state='" + state + '\'' +
                 '}';
     }

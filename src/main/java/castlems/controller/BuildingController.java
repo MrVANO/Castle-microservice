@@ -20,8 +20,20 @@ public class BuildingController {
     public BuildingService buildingService;
 
     @ResponseBody
-    @RequestMapping(value = "/createBuilding", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Long createCastle(@RequestBody BuildingRo buildingRo) {
-        return buildingService.createBuidling(buildingRo.getBuilding(), buildingRo.getCastleId());
+    @RequestMapping(value = "/createHouse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Long createHouse(@RequestBody BuildingRo buildingRo) {
+        return buildingService.createHouse(buildingRo.getCastleId(), buildingRo.getName());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/createForge", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Long createForge(@RequestBody BuildingRo buildingRo) {
+        return buildingService.createForge(buildingRo.getCastleId(), buildingRo.getName());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/createCoffers", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Long createCoffers(@RequestBody BuildingRo buildingRo) {
+        return buildingService.createCoffers(buildingRo.getCastleId(), buildingRo.getName());
     }
 }

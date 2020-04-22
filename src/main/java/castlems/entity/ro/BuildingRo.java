@@ -3,16 +3,8 @@ package castlems.entity.ro;
 import castlems.entity.Building;
 
 public class BuildingRo {
-    private Building building;
     private Long castleId;
-
-    public Building getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(Building building) {
-        this.building = building;
-    }
+    private String name;
 
     public Long getCastleId() {
         return castleId;
@@ -20,5 +12,13 @@ public class BuildingRo {
 
     public void setCastleId(Long castleId) {
         this.castleId = castleId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
