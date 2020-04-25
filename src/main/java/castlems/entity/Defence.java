@@ -1,21 +1,29 @@
 package castlems.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 
 @Entity
 public class Defence extends Frame {
-    @Column
-    private String type;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "castle_id")
+    @JsonBackReference
+    private Castle castle;
+
     @Column
     private Integer hp;
 
-    public String getType() {
-        return type;
+    @Column
+    private String type;
+
+    public Castle getCastle() {
+        return castle;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCastle(Castle castle) {
+        this.castle = castle;
     }
 
     public Integer getHp() {
@@ -24,6 +32,14 @@ public class Defence extends Frame {
 
     public void setHp(Integer hp) {
         this.hp = hp;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
