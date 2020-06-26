@@ -1,6 +1,7 @@
 package castlems.service;
 
 import castlems.entity.Castle;
+import castlems.repository.CastleCrudRepository;
 import castlems.repository.CastleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,12 @@ public class CastleService {
     @Autowired
     private final CastleRepository castleRepository;
 
-    public CastleService(CastleRepository castleRepository) {
+    @Autowired
+    private final CastleCrudRepository castleCrudRepository;
+
+    public CastleService(CastleRepository castleRepository, CastleCrudRepository castleCrudRepository) {
         this.castleRepository = castleRepository;
+        this.castleCrudRepository = castleCrudRepository;
     }
 
     public List<Castle> findAll() {
@@ -35,5 +40,9 @@ public class CastleService {
         Castle castle = castleRepository.findById(id).get();
         castle.setState("D");
         castleRepository.saveAndFlush(castle);
+    }
+
+    public Castle getCastleByUser(String user) {
+        return castleCrudRepository.findByUser(user).get();
     }
 }

@@ -12,6 +12,8 @@ public class Castle extends Frame {
     private Integer population;
     @Column
     private Integer gold;
+    @Column
+    private String user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "castle")
     private List<Building> buildings;
@@ -54,11 +56,20 @@ public class Castle extends Frame {
         this.defences = defences;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Castle{" +
                 "population=" + population +
                 ", gold=" + gold +
+                ", user='" + user + '\'' +
                 ", buildings=" + buildings +
                 ", defences=" + defences +
                 '}';

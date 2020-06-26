@@ -6,6 +6,8 @@ import castlems.service.CastleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.orm.hibernate5.SessionHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,13 @@ public class CastleController {
     public List<Castle> getAllCastles() {
         List<Castle> castles = castleService.findAll();
         return castles;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/userCastle", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Castle getUserCastle(Long id) {
+        String user = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return castleService.getCastleByUser(user);
     }
 
     @ResponseBody
